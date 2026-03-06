@@ -5,7 +5,7 @@ const newFooter = `
     <footer class="modern-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="whitelogo.webp" alt="CivicServe Logo" class="footer-logo">
+                <img src="whitelogo.webp" alt="Stackly Logo" class="footer-logo">
                 <p>Empowering citizens through transparent and efficient public services.</p>
             </div>
             <div class="footer-links">
@@ -19,13 +19,13 @@ const newFooter = `
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p>Email: support@civicserve.gov</p>
+                <p>Email: support@stackly.gov</p>
                 <p>Phone: 1-800-CIVIC-GOV</p>
                 <p>Hours: Mon-Fri, 8 AM - 5 PM</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 CivicServe Government Portal. All rights reserved.</p>
+            <p>&copy; 2026 Stackly Government Portal. All rights reserved.</p>
             <div class="legal-links">
                 <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
             </div>

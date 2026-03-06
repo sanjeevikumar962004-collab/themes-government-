@@ -23,7 +23,7 @@ const missingSectionHTML = `
                             <p class="about-paragraph">Whether you have a question about government services, need assistance with an application, or want to provide feedback, our team is ready to assist you.</p>
                         </div>
                         <div class="contact-info-bottom">
-                            <p><strong>Email:</strong> support@civicserve.gov</p>
+                            <p><strong>Email:</strong> support@stackly.gov</p>
                             <p><strong>Phone:</strong> 1-800-CIVIC-GOV</p>
                             <p><strong>Location:</strong> City Hall, 100 Civic Center, Downtown</p>
                             <p><strong>Hours:</strong> Mon-Fri, 8 AM - 5 PM</p>

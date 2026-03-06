@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>About - CivicServe Government Services</title>
+    <title>About - Stackly Government Services</title>
     <meta
         content="Learn about our government services agency — dedicated to transparent, efficient, and accountable public service for citizens and businesses alike."
         name="description" />
@@ -232,6 +232,10 @@
 </head>
 
 <body>
+    <div class="preloader-wrapper">
+        <div class="loader"></div>
+    </div>
+
     <div data-animation="default" class="navbarr w-nav" data-easing2="ease"
         data-wf-component-id="43e3e6ed-fbf2-9781-477d-9110adf0721d"
         data-wf-target="[[[&quot;43e3e6ed-fbf2-9781-477d-9110adf0721d&quot;,&quot;43e3e6ed-fbf2-9781-477d-9110adf0721d&quot;],[&quot;43e3e6ed-fbf2-9781-477d-9110adf0723b&quot;]]]"
@@ -239,30 +243,47 @@
         data-duration="400">
         <div class="nav-container w-container">
             <div class="nav-wrapper">
-                <a href="#" class="brand w-nav-brand">
+                <a href="index.html" class="brand w-nav-brand">
                     <img class="yoana" src="whitelogo.webp" width="132.57763671875" height="27.487016677856445" alt=""
                         sizes="132.5625px" data-w-id="43e3e6ed-fbf2-9781-477d-9110adf07221" loading="lazy" />
                 </a>
                 <nav role="navigation" class="nav-menu w-nav-menu">
                     <div class="nav-menu-wrapper">
-                        
-            <div data-hover="true" data-delay="0" class="nav-dropdown w-dropdown" style="display:inline-block; position:relative; z-index:900;">
-                <div class="nav-dropdown-toggle w-dropdown-toggle" style="padding: 10px 15px; cursor:pointer;">
-                    <div data-w-id="e47e6da5-a1bd-b084-8544-1a540861bb74" class="nav-button _2" style="display:inline-block;">Home ▾</div>
-                </div>
-                <nav class="nav-dropdown-list w-dropdown-list" style="position: absolute; top:100%; left:0; min-width:160px; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:8px 0; display:none;">
-                    <a href="index.html" class="nav-dropdown-link w-dropdown-link" style="display:block; padding:10px 16px; color:#111; text-decoration:none; transition:background 0.2s;">Home 1</a>
-                    <a href="index2.html" class="nav-dropdown-link w-dropdown-link" style="display:block; padding:10px 16px; color:#111; text-decoration:none; transition:background 0.2s;">Home 2</a>
-                </nav>
-            </div>
-            <style>
-                /* Dropdown hover behavior */
-                .nav-dropdown:hover .nav-dropdown-list { display: block !important; }
-                .nav-dropdown-link:hover { background-color: rgba(139, 0, 26, 0.06); color: #8b001a !important; }
-                /* Adapt scrolled state text color */
-                .navbarr.w-nav.nav-scrolled .nav-dropdown-toggle .nav-button { color: #111 !important; }
-            </style>
-        
+
+                        <div data-hover="true" data-delay="0" class="nav-dropdown w-dropdown"
+                            style="display:inline-block; position:relative; z-index:900;">
+                            <div class="nav-dropdown-toggle w-dropdown-toggle"
+                                style="padding: 10px 15px; cursor:pointer;">
+                                <div data-w-id="e47e6da5-a1bd-b084-8544-1a540861bb74" class="nav-button _2"
+                                    style="display:inline-block;">Home ▾</div>
+                            </div>
+                            <nav class="nav-dropdown-list w-dropdown-list"
+                                style="position: absolute; top:100%; left:0; min-width:160px; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:8px 0; display:none;">
+                                <a href="index.html" class="nav-dropdown-link w-dropdown-link"
+                                    style="display:block; padding:10px 16px; color:#111; text-decoration:none; transition:background 0.2s;">Home
+                                    1</a>
+                                <a href="index2.html" class="nav-dropdown-link w-dropdown-link"
+                                    style="display:block; padding:10px 16px; color:#111; text-decoration:none; transition:background 0.2s;">Home
+                                    2</a>
+                            </nav>
+                        </div>
+                        <style>
+                            /* Dropdown hover behavior */
+                            .nav-dropdown:hover .nav-dropdown-list {
+                                display: block !important;
+                            }
+
+                            .nav-dropdown-link:hover {
+                                background-color: rgba(139, 0, 26, 0.06);
+                                color: #8b001a !important;
+                            }
+
+                            /* Adapt scrolled state text color */
+                            .navbarr.w-nav.nav-scrolled .nav-dropdown-toggle .nav-button {
+                                color: #111 !important;
+                            }
+                        </style>
+
                         <a data-w-id="e47e6da5-a1bd-b084-8544-1a540861bb73" href="about.html"
                             class="link-block w-inline-block">
                             <div data-w-id="e47e6da5-a1bd-b084-8544-1a540861bb74" class="nav-button _2">About</div>
@@ -595,13 +616,16 @@
     <footer class="modern-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="whitelogo.webp" alt="CivicServe Logo" class="footer-logo">
+                <a href="index.html">
+                    <img src="whitelogo.webp" alt="Stackly Logo" class="footer-logo">
+                </a>
                 <p>Empowering citizens through transparent and efficient public services.</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="index.html">Home 1</a></li><li><a href="index2.html">Home 2</a></li>
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="index2.html">Home 2</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="blog.html">Blog</a></li>
@@ -610,13 +634,13 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p>Email: support@civicserve.gov</p>
+                <p>Email: support@stackly.gov</p>
                 <p>Phone: 1-800-CIVIC-GOV</p>
                 <p>Hours: Mon-Fri, 8 AM - 5 PM</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 CivicServe Government Portal. All rights reserved.</p>
+            <p>&copy; 2026 Stackly Government Portal. All rights reserved.</p>
             <div class="legal-links">
                 <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
             </div>
@@ -636,17 +660,42 @@
         type="text/javascript" integrity="sha384-LwazFtYPeu6wEePFv7yOZ0/qyX39/gx5xfSn55j7X8qOK4HIC7hv0kjOULtOQwZn"
         crossorigin="anonymous"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('button:not(.toggle-password):not(.w-nav-button), input[type="submit"], input[type="button"]');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'error.html';
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('button:not(.toggle-password):not(.w-nav-button), input[type="submit"], input[type="button"]');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.location.href = 'error.html';
+                });
+            });
         });
-    });
-});
-</script>
-</body>
+    </script>
 
+
+    <script>
+        (function () {
+            const startTime = Date.now();
+            window.addEventListener('load', function () {
+                const preloader = document.querySelector('.preloader-wrapper');
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, 3000 - elapsedTime);
+
+                setTimeout(() => {
+                    if (preloader) {
+                        preloader.classList.add('fade-out');
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }
+                }, remainingTime);
+            });
+        })();
+    </script>
+
+
+
+
+</body>
 </html>
+

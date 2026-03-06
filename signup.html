@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Sign Up - CivicServe</title>
-    <meta content="Create your CivicServe account to manage your applications and records." name="description" />
+    <title>Sign Up - Stackly</title>
+    <meta content="Create your Stackly account to manage your applications and records." name="description" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -200,6 +200,10 @@
 </head>
 
 <body>
+    <div class="preloader-wrapper">
+        <div class="loader"></div>
+    </div>
+
 
 
     <!-- ── Auth Section ── -->
@@ -207,7 +211,7 @@
         <div class="auth-card">
             <div class="auth-header">
                 <a href="index.html" style="display:inline-block; margin-bottom: 24px;">
-                    <img src="whitelogo.webp" alt="CivicServe Logo" style="height: 32px; filter: brightness(0);">
+                    <img src="whitelogo.webp" alt="Stackly Logo" style="height: 32px; filter: brightness(0);">
                 </a>
                 <h1 class="auth-title">Create Account</h1>
                 <p class="auth-subtitle">Register to access and manage public services</p>
@@ -289,7 +293,7 @@
     <footer class="modern-footer" style="margin-top:auto;">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="whitelogo.webp" alt="CivicServe Logo" class="footer-logo">
+                <a href="index.html"><img src="whitelogo.webp" alt="Stackly Logo" class="footer-logo"></a>
                 <p>Empowering citizens through transparent and efficient public services.</p>
             </div>
             <div class="footer-links">
@@ -304,13 +308,13 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p>Email: support@civicserve.gov</p>
+                <p>Email: support@stackly.gov</p>
                 <p>Phone: 1-800-CIVIC-GOV</p>
                 <p>Hours: Mon-Fri, 8 AM - 5 PM</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 CivicServe Government Portal. All rights reserved.</p>
+            <p>&copy; 2026 Stackly Government Portal. All rights reserved.</p>
             <div class="legal-links">
                 <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
             </div>
@@ -363,17 +367,32 @@
     <script src="https://cdn.prod.website-files.com/6902145bf044c5c880745efd/js/webflow.edcf51fe.0fc04099017efaf1.js"
         type="text/javascript" crossorigin="anonymous"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('button:not(.toggle-password):not(.w-nav-button), input[type="submit"], input[type="button"]');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'error.html';
-        });
-    });
-});
-</script>
+
+
+
+    <script>
+        (function () {
+            const startTime = Date.now();
+            window.addEventListener('load', function () {
+                const preloader = document.querySelector('.preloader-wrapper');
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, 3000 - elapsedTime);
+
+                setTimeout(() => {
+                    if (preloader) {
+                        preloader.classList.add('fade-out');
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }
+                }, remainingTime);
+            });
+        })();
+    </script>
+
+
+
+
 </body>
 
 </html>
