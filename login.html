@@ -8,6 +8,8 @@
     <meta content="Login to your Stackly account to manage your applications and records." name="description" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Strict Form Validation (loaded early to patch checkValidity before Webflow) -->
+    <script src="form_validation.js" defer></script>
 
     <style>
         :root {
@@ -203,26 +205,27 @@
                 <p class="auth-subtitle">Log in to manage your civic services</p>
             </div>
 
-            <form action="error.html" method="GET" class="auth-form">
+            <form action="error.html" method="GET" class="auth-form" id="loginForm">
                 <div class="form-group">
                     <label for="email" class="form-label">Email Address</label>
                     <input type="email" id="email" name="email" class="form-input" placeholder="citizen@example.com"
                         required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="password-field-group">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <label for="password" class="form-label">Password</label>
                         <a href="forgot.html"
                             style="font-size:13px; color:var(--bs-primary); text-decoration:none; font-weight:500;">Forgot
                             password?</a>
                     </div>
+                    <!-- Wrapper with overflow visible so eye icon is never clipped -->
                     <div style="position: relative; display: flex; align-items: center;">
                         <input type="password" id="password" name="password" class="form-input" placeholder="••••••••"
-                            required minlength="8" style="flex-grow: 1; padding-right: 40px;">
+                            required minlength="8" style="flex-grow: 1; padding-right: 44px; width: 100%;">
                         <button type="button" class="toggle-password"
                             onclick="togglePasswordVisibility('password', this)"
-                            style="position: absolute; right: 12px; background: none; border: none; padding: 0; cursor: pointer; color: var(--bs-gray-500); display: flex;">
+                            style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 4px; cursor: pointer; color: var(--bs-gray-500); display: flex; z-index: 2;">
                             <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -230,6 +233,7 @@
                             </svg>
                         </button>
                     </div>
+                    <!-- Error span will be appended here by form_validation.js (outside the flex row) -->
                 </div>
 
                 <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px;">
@@ -305,6 +309,26 @@
                 icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
             }
         }
+
+        // Intercept clicks on ALL submit buttons in the capture phase to redirect safely
+        document.addEventListener('click', function (e) {
+            const target = e.target;
+            if (target && (target.classList.contains('auth-btn') || target.classList.contains('submit-button') || (target.tagName === 'INPUT' && target.type === 'submit'))) {
+                const form = target.form;
+                if (form) {
+                    // Check if form is valid before allowing the final navigation
+                    if (form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        window.location.href = 'error.html';
+                    } else {
+                        // Let the validation script handle errors
+                        form.reportValidity();
+                    }
+                }
+            }
+        }, true);
     </script>
 
 

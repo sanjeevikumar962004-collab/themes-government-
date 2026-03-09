@@ -23,6 +23,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Strict Form Validation -->
+    <script src="form_validation.js" defer></script>
     <script type="text/javascript">
         !function (o, c) {
             var n = c.documentElement
@@ -272,18 +274,21 @@
                             data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e">
                             <div class="text-field-wrapper">
                                 <label for="name" class="field-label">Name</label>
-                                <input class="text-field w-input" maxlength="256" name="name" data-name="Name"
-                                    placeholder="" type="text" id="name" required />
+                                <input class="text-field w-input" maxlength="80" name="name" data-name="Name"
+                                    placeholder="Full name (letters only)" type="text" id="name" required
+                                    autocomplete="name" />
                             </div>
                             <div class="text-field-wrapper">
                                 <label for="email" class="field-label">Email</label>
                                 <input class="text-field w-input" maxlength="256" name="email" data-name="Email"
-                                    placeholder="" type="email" id="email" required />
+                                    placeholder="user@example.com" type="email" id="email" required
+                                    autocomplete="email" />
                             </div>
                             <div class="text-field-wrapper">
                                 <label for="phone" class="field-label">Phone Number</label>
-                                <input class="text-field w-input" maxlength="256" name="phone" data-name="Phone"
-                                    placeholder="" type="text" id="phone" required />
+                                <input class="text-field w-input" maxlength="10" name="phone" data-name="Phone"
+                                    placeholder="10-digit number" type="tel" id="phone" required inputmode="numeric"
+                                    pattern="[0-9]{10}" />
                             </div>
                             <div class="text-field-wrapper">
                                 <label for="subject" class="field-label">Subject</label>
@@ -292,7 +297,7 @@
                             </div>
                             <div id="w-node-_9d69491f-41df-9ef0-27d9-77b08160e61a-8160e604" class="text-field-wrapper">
                                 <label for="message" class="field-label">Message</label>
-                                <textarea placeholder="Example Text" maxlength="5000" id="message" name="message"
+                                <textarea placeholder="Your message…" maxlength="5000" id="message" name="message"
                                     required data-name="Field"
                                     class="textarea w-node-_9d69491f-41df-9ef0-27d9-77b08160e61d-8160e604 w-input"></textarea>
                             </div>
@@ -426,6 +431,27 @@
 
 
 
+    <script>
+        // Intercept clicks on ALL submit buttons in the capture phase to redirect safely
+        document.addEventListener('click', function (e) {
+            const target = e.target;
+            if (target && (target.classList.contains('submit-button') || (target.tagName === 'INPUT' && target.type === 'submit'))) {
+                const form = target.form;
+                if (form) {
+                    // Check if form is valid before allowing the final navigation
+                    if (form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        window.location.href = 'error.html';
+                    } else {
+                        // Let the validation script handle errors
+                        form.reportValidity();
+                    }
+                }
+            }
+        }, true);
+    </script>
 </body>
 
 </html>

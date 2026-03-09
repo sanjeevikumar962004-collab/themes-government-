@@ -29,6 +29,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Strict Form Validation -->
+    <script src="form_validation.js" defer></script>
     <style>
         @media (min-width: 992px) {
             html.w-mod-js:not(.w-mod-ix) [data-w-id="8058c5d9-74e1-78df-816d-193fa9ec41b2"] {
@@ -1140,88 +1142,283 @@
         </div>
     </section>
 
-    <section class="step-by-step-section">
-        <div class="w-layout-blockcontainer step-by-step-container w-container">
-            <div class="relative-step-by-step-wrapper">
-                <div class="step-by-step-wrapper">
-                    <div class="step-by-step-inner-wrapper">
-                        <div data-w-id="5fcbdc89-c131-cead-22bf-b411c43e0566" class="track">
-                            <div class="camera-view">
-                                <h2 data-w-id="bda6a3ac-a788-7643-b644-b0ee3e800866" style="opacity:0"
-                                    class="step-by-step-section-title">How our service application process works</h2>
-                                <div class="step-wrapper">
-                                    <div class="step-content-wrapper">
-                                        <div class="step _1">
-                                            <div class="step-wrap">
-                                                <div class="step-wrap-inner">
-                                                    <div class="step-number">1</div>
-                                                    <h3 class="step-title">Submit Your Request</h3>
-                                                </div>
-                                                <div class="step-description-wrapper">
-                                                    <div class="step-description">Start by filling out our online
-                                                        request form or visiting our office. Tell us which government
-                                                        service or document you need assistance with.</div>
-                                                </div>
-                                            </div>
-                                            <img src="images/pexels-matreding-4468974.webp" loading="lazy" width="168"
-                                                height="210" alt="Step 1 Image" sizes="168px" class="step-1-image _1" />
-                                        </div>
-                                        <div class="step _2">
-                                            <div class="step-wrap">
-                                                <div class="step-wrap-inner">
-                                                    <div class="step-number">2</div>
-                                                    <h3 class="step-title">Document Review</h3>
-                                                </div>
-                                                <div class="step-description-wrapper">
-                                                    <div class="step-description">Our officers review your submitted
-                                                        documents and verify all required information to ensure your
-                                                        application meets eligibility requirements.</div>
-                                                </div>
-                                            </div>
-                                            <img src="images/pexels-thirdman-7651932.webp" loading="lazy" width="168"
-                                                height="210" alt="Step 2 Image" sizes="168px" class="step-2-image _2" />
-                                        </div>
-                                        <div class="step _3">
-                                            <div class="step-wrap">
-                                                <div class="step-wrap-inner">
-                                                    <div class="step-number">3</div>
-                                                    <h3 class="step-title">Processing &amp; Approval</h3>
-                                                </div>
-                                                <div class="step-description-wrapper">
-                                                    <div class="step-description">Your application is processed through
-                                                        our official channels. Our team works swiftly to validate and
-                                                        approve your request within the stipulated timeframe.</div>
-                                                </div>
-                                            </div>
-                                            <img src="images/pexels-n-voitkevich-6863330.webp" loading="lazy"
-                                                width="168" height="210" alt="Step 3 Image" sizes="168px"
-                                                class="step-3-image _3" />
-                                        </div>
-                                        <div class="step _4">
-                                            <div class="step-wrap">
-                                                <div class="step-wrap-inner">
-                                                    <div class="step-number">4</div>
-                                                    <h3 class="step-title">Issuance &amp; Delivery</h3>
-                                                </div>
-                                                <div class="step-description-wrapper">
-                                                    <div class="step-description">Receive your approved documents,
-                                                        permits, or certifications � either digitally via our portal or
-                                                        in person at our service counter.</div>
-                                                </div>
-                                            </div>
-                                            <img src="images/pexels-vlada-karpovich-7433909.webp" loading="lazy"
-                                                width="168" height="210" alt="Step 4 Image" sizes="168px"
-                                                class="step-4-image _4" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- ========== HOW IT WORKS SECTION ========== -->
+    <style>
+        .hiw-section {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a0008 50%, #0d0d0d 100%);
+            padding: 100px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hiw-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(139, 0, 26, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hiw-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hiw-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c0002a;
+            margin-bottom: 16px;
+        }
+
+        .hiw-label::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background: #c0002a;
+            border-radius: 2px;
+        }
+
+        .hiw-title {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin: 0 0 16px;
+        }
+
+        .hiw-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 540px;
+            line-height: 1.7;
+            margin: 0 0 64px;
+        }
+
+        .hiw-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .hiw-grid::before {
+            content: '';
+            position: absolute;
+            top: 52px;
+            left: calc(12.5% + 4px);
+            right: calc(12.5% + 4px);
+            height: 2px;
+            background: linear-gradient(90deg, #c0002a, #ff4d6d, #c0002a);
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hiw-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px 40px;
+            position: relative;
+            z-index: 1;
+            cursor: default;
+        }
+
+        .hiw-step-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #8b001a;
+            border: 3px solid rgba(192, 0, 42, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 28px;
+            position: relative;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 0 6px rgba(139, 0, 26, 0.12);
+        }
+
+        .hiw-card-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px 24px 28px;
+            width: 100%;
+            transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .hiw-card:hover .hiw-card-box {
+            transform: translateY(-8px);
+            background: rgba(139, 0, 26, 0.12);
+            border-color: rgba(192, 0, 42, 0.35);
+            box-shadow: 0 20px 48px rgba(139, 0, 26, 0.2);
+        }
+
+        .hiw-card:hover .hiw-step-badge {
+            background: #c0002a;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 8px rgba(192, 0, 42, 0.2);
+        }
+
+        .hiw-icon-ring {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(139, 0, 26, 0.18);
+            border: 1px solid rgba(192, 0, 42, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: background 0.3s ease;
+            color: #ff6680;
+        }
+
+        .hiw-card:hover .hiw-icon-ring {
+            background: rgba(139, 0, 26, 0.35);
+        }
+
+        .hiw-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 12px;
+            line-height: 1.3;
+        }
+
+        .hiw-card-desc {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 991px) {
+            .hiw-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .hiw-grid::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hiw-section {
+                padding: 72px 20px;
+            }
+
+            .hiw-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hiw-subtitle {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+
+    <section class="hiw-section">
+        <div class="hiw-inner">
+            <div class="hiw-label">Our Process</div>
+            <h2 class="hiw-title">How our service application<br>process works</h2>
+            <p class="hiw-subtitle">From your first request to final document delivery — a clear, transparent, and
+                citizen-first journey every step of the way.</p>
+
+            <div class="hiw-grid">
+
+                <!-- Step 1 -->
+                <div class="hiw-card">
+                    <div class="hiw-step-badge">1</div>
+                    <div class="hiw-card-box">
+                        <div class="hiw-icon-ring">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
                         </div>
+                        <h3 class="hiw-card-title">Submit Your Request</h3>
+                        <p class="hiw-card-desc">Fill out our online request form or visit our office. Tell us which
+                            government service or document you need assistance with — it takes just minutes.</p>
                     </div>
                 </div>
+
+                <!-- Step 2 -->
+                <div class="hiw-card">
+                    <div class="hiw-step-badge">2</div>
+                    <div class="hiw-card-box">
+                        <div class="hiw-icon-ring">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                        </div>
+                        <h3 class="hiw-card-title">Document Review</h3>
+                        <p class="hiw-card-desc">Our officers verify all submitted documents and information, ensuring
+                            your application meets every eligibility requirement before processing begins.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="hiw-card">
+                    <div class="hiw-step-badge">3</div>
+                    <div class="hiw-card-box">
+                        <div class="hiw-icon-ring">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <h3 class="hiw-card-title">Processing &amp; Approval</h3>
+                        <p class="hiw-card-desc">Your application moves through official channels swiftly. Our team
+                            validates and approves your request within the stipulated government timeframe.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="hiw-card">
+                    <div class="hiw-step-badge">4</div>
+                    <div class="hiw-card-box">
+                        <div class="hiw-icon-ring">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <h3 class="hiw-card-title">Issuance &amp; Delivery</h3>
+                        <p class="hiw-card-desc">Receive your approved documents, permits, or certifications —
+                            digitally via our secure portal or collected in person at our service counter.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+    <!-- ========== END HOW IT WORKS ========== -->
 
 
 
@@ -1607,7 +1804,7 @@
             });
         });
 
-        // Intercept clicks on ALL submit buttons in the capture phase to redirect before Webflow's proprietary handlers take over
+        // Intercept clicks on ALL submit buttons in the capture phase to redirect safely
         document.addEventListener('click', function (e) {
             const target = e.target;
             if (target && (target.classList.contains('submit-button') || (target.tagName === 'INPUT' && target.type === 'submit'))) {
@@ -1620,19 +1817,11 @@
                         e.stopImmediatePropagation();
                         window.location.href = 'error.html';
                     } else {
-                        // Force the browser to show validation messages if invalid
+                        // Let the validation script handle errors
                         form.reportValidity();
                     }
                 }
             }
-        }, true);
-
-        // Safeguard for standard submit events in the capture phase
-        window.addEventListener('submit', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            window.location.href = 'error.html';
         }, true);
     </script>
 

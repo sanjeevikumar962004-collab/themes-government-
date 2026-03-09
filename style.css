@@ -415,6 +415,21 @@ pre.w-code-block code {
   display: inline-block !important;
 }
 
+/* ── Remove Webflow "Made with Webflow" badge & its SVG image requests ── */
+.w-webflow-badge,
+.w-webflow-badge>img,
+.w-webflow-badge>i,
+[href*="webflow.com"].w-webflow-badge,
+#webflow-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
 h1,
 h2,
 h3,

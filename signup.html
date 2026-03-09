@@ -8,6 +8,8 @@
     <meta content="Create your Stackly account to manage your applications and records." name="description" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Strict Form Validation -->
+    <script src="form_validation.js" defer></script>
 
     <style>
         :root {
@@ -222,11 +224,12 @@
                     <div class="form-group">
                         <label for="firstName" class="form-label">First Name</label>
                         <input type="text" id="firstName" name="firstName" class="form-input" placeholder="John"
-                            required>
+                            required pattern="[^\d!@#$%^&*()_+=\[\]{};':&quot;\\|,.<>/?`~]+" autocomplete="given-name">
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Doe" required>
+                        <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Doe" required
+                            pattern="[^\d!@#$%^&*()_+=\[\]{};':&quot;\\|,.<>/?`~]+" autocomplete="family-name">
                     </div>
                 </div>
 
@@ -354,6 +357,26 @@
                 icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
             }
         }
+
+        // Intercept clicks on ALL submit buttons in the capture phase to redirect safely
+        document.addEventListener('click', function (e) {
+            const target = e.target;
+            if (target && (target.classList.contains('auth-btn') || target.classList.contains('submit-button') || (target.tagName === 'INPUT' && target.type === 'submit'))) {
+                const form = target.form;
+                if (form) {
+                    // Check if form is valid before allowing the final navigation
+                    if (form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        window.location.href = 'error.html';
+                    } else {
+                        // Let the validation script handle errors
+                        form.reportValidity();
+                    }
+                }
+            }
+        }, true);
     </script>
 
     <!-- Webflow Core Scripts -->

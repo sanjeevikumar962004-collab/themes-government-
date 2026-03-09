@@ -8,6 +8,8 @@
     <meta content="Reset your Stackly account password." name="description" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Strict Form Validation -->
+    <script src="form_validation.js" defer></script>
 
     <style>
         :root {
@@ -307,6 +309,26 @@
                 }, remainingTime);
             });
         })();
+    </script>
+
+    <script>
+        // Intercept clicks on submit buttons in capture phase to redirect safely
+        document.addEventListener('click', function (e) {
+            const target = e.target;
+            if (target && (target.classList.contains('auth-btn') || target.classList.contains('submit-button') || (target.tagName === 'INPUT' && target.type === 'submit'))) {
+                const form = target.form;
+                if (form) {
+                    if (form.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        window.location.href = 'error.html';
+                    } else {
+                        form.reportValidity();
+                    }
+                }
+            }
+        }, true);
     </script>
 
 
