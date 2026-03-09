@@ -278,7 +278,7 @@
                             <div class="text-field-wrapper">
                                 <label for="email" class="field-label">Email</label>
                                 <input class="text-field w-input" maxlength="256" name="email" data-name="Email"
-                                    placeholder="" type="text" id="email" required />
+                                    placeholder="" type="email" id="email" required />
                             </div>
                             <div class="text-field-wrapper">
                                 <label for="phone" class="field-label">Phone Number</label>
@@ -385,6 +385,9 @@
                         e.stopPropagation();
                         e.stopImmediatePropagation();
                         window.location.href = 'error.html';
+                    } else {
+                        // Force the browser to show validation messages if invalid
+                        form.reportValidity();
                     }
                 }
             }
@@ -406,7 +409,7 @@
             window.addEventListener('load', function () {
                 const preloader = document.querySelector('.preloader-wrapper');
                 const elapsedTime = Date.now() - startTime;
-                const remainingTime = Math.max(0, 3000 - elapsedTime);
+                const remainingTime = Math.max(0, 500 - elapsedTime);
 
                 setTimeout(() => {
                     if (preloader) {
@@ -424,5 +427,5 @@
 
 
 </body>
-</html>
 
+</html>

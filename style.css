@@ -4388,7 +4388,8 @@ li {
   background-color: var(--_collection-1---color--main-brand-color);
   font-size: var(--_typography---extra-small-body-text);
   border-radius: 100px;
-  width: 50%;
+  width: 100%;
+  min-width: max-content;
 }
 
 .submit-button:hover {
@@ -7613,5 +7614,43 @@ li {
     width: 0;
     right: 0;
     left: unset;
+  }
+}
+
+/* Nest Hub and Short Viewport Responsiveness Fix */
+@media screen and (max-height: 700px) and (min-width: 992px) {
+  .hero-section {
+    justify-content: center;
+    padding-top: 80px;
+    /* Account for fixed header */
+  }
+
+  .hero-section-title {
+    --_typography---h1: 3.8rem;
+    font-size: 3.8rem;
+    line-height: 1.1;
+  }
+
+  .hero-heading-wrapper {
+    width: 55%;
+  }
+
+  .hero-content-wrapper {
+    width: 45%;
+  }
+
+  .award-badge-inner-wrapper {
+    width: 35%;
+  }
+
+  .hero-paragraph {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .hero-section-title {
+    --_typography---h1: 4rem;
+    font-size: 4rem;
   }
 }

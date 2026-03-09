@@ -316,7 +316,7 @@
             window.addEventListener('load', function () {
                 const preloader = document.querySelector('.preloader-wrapper');
                 const elapsedTime = Date.now() - startTime;
-                const remainingTime = Math.max(0, 3000 - elapsedTime);
+                const remainingTime = Math.max(0, 500 - elapsedTime);
 
                 setTimeout(() => {
                     if (preloader) {

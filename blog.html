@@ -974,8 +974,8 @@
                         announcements delivered directly to your inbox — no spam, just what matters.</p>
                 </div>
                 <div class="newsletter-cta">
-                    <form class="newsletter-form" onsubmit="return false;">
-                        <input type="email" class="newsletter-input" placeholder="Enter your email address" />
+                    <form action="error.html" method="GET" class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
                         <button type="submit" class="newsletter-btn">Subscribe</button>
                     </form>
                 </div>
@@ -1081,17 +1081,6 @@
         });
     </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const buttons = document.querySelectorAll('button:not(.toggle-password):not(.w-nav-button), input[type="submit"], input[type="button"]');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    window.location.href = 'error.html';
-                });
-            });
-        });
-    </script>
 
 
     <script>
@@ -1100,7 +1089,7 @@
             window.addEventListener('load', function () {
                 const preloader = document.querySelector('.preloader-wrapper');
                 const elapsedTime = Date.now() - startTime;
-                const remainingTime = Math.max(0, 3000 - elapsedTime);
+                const remainingTime = Math.max(0, 500 - elapsedTime);
 
                 setTimeout(() => {
                     if (preloader) {
@@ -1118,5 +1107,5 @@
 
 
 </body>
-</html>
 
+</html>
